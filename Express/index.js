@@ -18,7 +18,14 @@ app.get("/blog/:artigo?", function(req, res){
 })
 
 app.get("/canal", (req, res)=>{
-    res.send("<h1>Escolhe seu vídeo</h1>")
+    let canal = req.query["canal"]
+    
+    if(canal){
+        res.send(`<h1>${canal}</h1>`)
+    }else{
+        res.send("Nenhum canal fornecido")
+    }
+
 })
 
 app.get("/canal/youtube", (req, res)=>{
