@@ -5,8 +5,16 @@ app.get("/", function(req, res){
     res.send("<h1>Bem vindo ao guia do programador</h1>")
 })
 
-app.get("/blog", function(req, res){
-    res.send("Bem vindo ao meu blog")
+app.get("/blog/:artigo?", function(req, res){
+    let artigo = req.params.artigo
+
+    if(artigo){
+        res.send(`<h1>Artigo: ${artigo}</h1>`)
+    }else{
+        res.send("<h1>Bem vindo ao meu blog</h1>|<h2>www.guiadoprogramador.com</h2>")
+    }
+
+    
 })
 
 app.get("/canal", (req, res)=>{
@@ -15,6 +23,14 @@ app.get("/canal", (req, res)=>{
 
 app.get("/canal/youtube", (req, res)=>{
     res.send("Bem vindo ao meu canal")
+})
+
+app.get("/ola/:nome/:empresa", (req, res)=>{
+    // REQ => dados enviados peelo usuario
+    // RES => a resposta
+    let nome = req.params.nome
+    let empresa = req.params.empresa
+    res.send(`<h1>Oi ${nome} do ${empresa}</h1>`)
 })
 
 
